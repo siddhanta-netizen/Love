@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Love 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    h1.show {
+      opacity: 1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      transform: rotate(45deg);
+      animation: floatUp linear forwards;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { top: 0; left: -10px; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-600px) rotate(45deg); opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <h1 id="loveMessage">I Love You ❤️</h1>
+
+  <script>
+    const messages = [
+      "You make my heart smile 😊",
+      "My love for you is endless 💖",
+      "Forever and always 💕",
+      "You are my sunshine ☀️",
+      "I can't stop thinking of you 😘",
+      "Every moment with you is magical ✨"
+    ];
+
+    const loveMessage = document.getElementById('loveMessage');
+    let msgIndex = 0;
+
+    // Function to show messages one by one
+    function showMessage() {
+      loveMessage.classList.remove('show');
+      setTimeout(() => {
+        loveMessage.textContent = messages[msgIndex];
+        loveMessage.classList.add('show');
+        msgIndex = (msgIndex + 1) % messages.length;
+      }, 500);
+    }
+
+    setInterval(showMessage, 3000); // Change message every 3 seconds
+    showMessage();
+
+    // Function to create hearts
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      const size = 10 + Math.random() * 25;
+      heart.style.width = heart.style.height = size + 'px';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.backgroundColor = getRandomColor();
+      heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => { heart.remove(); }, 5000);
+    }
+
+    // Create hearts continuously
+    setInterval(createHeart, 300);
+
+    function getRandomColor() {
+      const colors = ['#ff6b81','#ff8fa3','#ffb3c1','#ff4d6d','#ff1a4f','#ff9a9e','#ffc0cb'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+</body>
+</html>
