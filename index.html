@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Love You 1000 Times ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+    }
+
+    .love-container {
+      max-height: 60vh;
+      overflow-y: scroll;
+      padding: 10px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      width: 90%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .love-text {
+      font-size: 1.2rem;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    .heart {
+      color: red;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 I Love You my jaan 💖</h1>
+  <div class="love-container" id="loveContainer"></div>
+
+  <script>
+    const container = document.getElementById('loveContainer');
+
+    for (let i = 1; i <= 1000; i++) {
+      const span = document.createElement('span');
+      span.classList.add('love-text');
+      span.innerHTML = `${i}. I Love You Mor Janiya <span class="heart">❤️</span><br>`;
+      container.appendChild(span);
+    }
+
+    // Optional: auto-scroll
+    container.scrollTop = container.scrollHeight;
+  </script>
+</body>
+</html>
